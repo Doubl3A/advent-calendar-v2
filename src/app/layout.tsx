@@ -1,19 +1,11 @@
 import type {Metadata} from "next";
-import {Geist, Geist_Mono, JetBrains_Mono, Ubuntu, Ubuntu_Sans} from "next/font/google";
+import {JetBrains_Mono, Ubuntu, Ubuntu_Sans} from "next/font/google";
 import "./globals.css";
 import {ThemeProvider} from "@/providers/theme-provider";
-import {ModeToggle} from "@/components/ThemeSelector";
 import {ReactNode} from "react";
-
-const geistSans = Geist({
-    variable: "--font-geist-sans",
-    subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-    variable: "--font-geist-mono",
-    subsets: ["latin"],
-});
+import {cn} from "@/lib/utils";
+import Header from "@/components/shared/header";
+import Footer from "@/components/shared/Footer";
 
 const ubuntuSans = Ubuntu_Sans({
     variable: "--font-ubuntu-sans",
@@ -56,11 +48,15 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning>
         <body
-            className={`${ubuntuSans.variable} ${ubuntu.variable} ${jetBrainsMono.variable} antialiased bg-background`}
+            className={cn(`${ubuntuSans.variable} ${ubuntu.variable} ${jetBrainsMono.variable}`, "w-full h-full min-h-screen flex flex-col")}
         >
         <ThemeProvider attribute={"class"} defaultTheme={"system"} enableSystem disableTransitionOnChange>
-            <ModeToggle/>
-            {children}
+            <Header/>
+            <main
+                className="flex-auto w-full m-auto my-0 max-w-6xl">
+                {children}
+            </main>
+            <Footer/>
         </ThemeProvider>
         </body>
         </html>
