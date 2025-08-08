@@ -53,7 +53,7 @@ export default function RootLayout({
         <ThemeProvider attribute={"class"} defaultTheme={"system"} enableSystem disableTransitionOnChange>
             <Header/>
             <main
-                className="flex-auto w-full m-auto my-0 max-w-6xl px-4">
+                className="flex-auto w-full m-auto my-0 max-w-6xl [&>*]:mx-4">
                 {children}
             </main>
             <Footer/>

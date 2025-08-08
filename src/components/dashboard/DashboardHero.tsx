@@ -15,9 +15,9 @@ interface DashboardHeroProps {
 const DashboardHero = ({variant}: DashboardHeroProps) => {
 
     return (
-        <Card>
+        <Card className={""}>
             <CardHeader>
-                <CardTitle className={"flex flex-col gap-y-2"}>
+                <CardTitle className={"flex flex-col gap-y-4"}>
                     <span className={"text-4xl"}>Dag 10</span>
                     <StatusBadge status={variant}/>
                 </CardTitle>
@@ -25,16 +25,17 @@ const DashboardHero = ({variant}: DashboardHeroProps) => {
                     {variant === "unopened" ?
                         <Button variant={"default"} size={"lg"} className={"text-md"}>Åpne dagens luke</Button>
                         : (
-                            <div className={"grid text-center gap-y-2"}>
+                            <div className={"grid text-center gap-y-4"}>
                                 <Badge variant={"default"} className={"flex gap-x-4"}>
                                     <span className={"text-3xl"}>0kr</span>
                                     <FigureIcon type={"ChristmasTree"} className={""}/>
                                 </Badge>
                                 <Popover>
-                                    <PopoverTrigger>
-                                        <div className={"flex justify-around"}>
+                                    <PopoverTrigger asChild className={"pb-1.5"}>
+                                        <div className={"flex justify-around items-center"}>
                                             <CountdownToNextDay/>
-                                            <Info/></div>
+                                            <Info className={"h-5"}/>
+                                        </div>
                                     </PopoverTrigger>
                                     <PopoverContent>
                                         Hvor lenge det er til neste luke kan åpnes.
